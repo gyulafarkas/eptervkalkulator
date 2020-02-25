@@ -1,0 +1,77 @@
+.arkalkulator{
+    width: 500px;
+    margin: auto;
+    
+}
+
+.container{
+    width: 700px;
+
+}
+
+p { display: inline;
+}
+
+h1 { font-family: "Arial Narrow", Arial, sans-serif!important; font-size: 35px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 10x; } a,h3,h4,h5,h6 { font-family: "Arial Narrow", Arial, sans-serif; font-size: 22px; font-style: normal; font-variant: normal; line-height: 15.4px; } p { font-family: "Arial Narrow", Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: "Arial Narrow", Arial, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: "Arial Narrow", Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+
+.btn.btn-outline-dark{
+   font-family: "Arial Narrow", Arial, sans-serif; font-size: 22px; font-style: normal; font-variant: normal; line-height: 15.4px; } p { font-family: "Arial Narrow", Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: "Arial Narrow", Arial, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: "Arial Narrow", Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px;
+}
+select {
+    text-align: center;
+    text-align-last: center;
+    /* webkit*/
+  }
+  
+  option {
+    text-align: center;
+  }
+
+  .osszeg{
+      background-color: rgb(0, 36, 84);
+      color:white;
+      padding: 2% 0 0 2%;
+  }
+
+  .calc{
+    width: 600px;
+    margin: auto;
+  }
+
+  .input-group-text{
+    width: 100px;
+  }
+
+  .input-group-append{
+    width: 45px;
+  }
+  .input-group.mb-3{
+      padding:none;
+  }
+
+  .navdiv{
+    border-bottom:5px solid;
+    border-color: black;
+    border-radius: 1px;
+  }
+
+  .nav-pills{
+margin:0!important;
+padding:0;
+
+  }
+
+  .tablink{
+    font-family: "Arial Narrow", Arial, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; line-height: 15.4px; font-weight: bold; } p { font-family: "Arial Narrow", Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: "Arial Narrow", Arial, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: "Arial Narrow", Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px;
+    
+  }
+
+  .btn-secondary{
+    background-color: rgb(0, 36, 84);
+    border-radius: 0!important;
+  }
+
+  .border-secondary{
+    border-width: 2px!important;
+    border-color: black!important;
+  }

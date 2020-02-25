@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<title>Árkalkulátor</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="arkalkulator.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="calcstyle.css">
+</head>
+<body>
+  <div class="calc">
+  <div class="container-fluid border border-secondary rounded-lg">
+    <div class="row">
+      <div class="container-fluid osszeg">
+        <h5 class="text-center"> Összes tervezett nettó alapterület(m2): </h5>
+        <h5 class="osszalapterulet text-center" id="osszalapterulet">0</h5>
+        <h5 class="text-center"> Várható tervezési díj(Ft): </h5>
+        <h5 class="vegeredmeny text-center" id="vegeredmeny">0</h5>
+      </div>
+    </div>
+    <div class="row">
+    <div class="container-fluid p-3 bg-dark text-white">
+        <div class="row">
+          <div class="col-sm d-flex justify-content-center align-items-center">
+            <div class="input-group d-flex justify-content-center align-items-center">
+              <h6>Meglévő épület(ha van):</h6>
+              <input onchange="kalkulal()" input type="number" name="meglevoepulet" id="meglevoepulet" value="0" class="input-group-text ml-3"></input>
+              <div class="input-group-append">
+                <span class="input-group-text m2">m2</span>
+              </div>
+            </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="container-fluid p-3 bg-dark text-white">
+        <div class="row">
+          <div class="col-sm text-center">
+            <h6>Örökségvédelem:</h6>
+            <select onchange="kalkulal()" id="oroksegvedelem" class = "oroksegvedelem form-control">
+            <option value="nemkiemelt">Nem kiemelt</option>
+            <option value="kiemelt">Kiemelt</option>
+            </select>
+      </div>
+        <div class="col-sm text-center">
+            <h6>Terepviszonyok (lejtés):</h6>
+            <select onchange="kalkulal()" id="terepviszonyok" class="terepviszonyok form-control">
+            <option value="15alatt">15% alatt</option>
+            <option value="15felett">15% felett</option>
+            </select>
+      </div>
+    </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container-fluid pb-2 pt-2 bg-bright navdiv">
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+              <a href="javascript:void(0)" onclick="openTab(event, 'tab1');" class="nav-item tablink btn btn-secondary btn-lg pb-2 pt-2 pr-3 pl-3">Pince</a>
+          </li>
+          <li class="nav-item"> 
+              <a href="javascript:void(0)" onclick="openTab(event, 'tab2');" class="nav-item tablink btn btn-secondary btn-lg pb-2 pt-2 pr-3 pl-3">Fedett Terasz</a>
+          </li>
+          <li class="nav-item">
+              <a href="javascript:void(0)" onclick="openTab(event, 'tab3');" class="nav-item tablink btn btn-secondary btn-lg pb-2 pt-2 pr-3 pl-3">Földszint</a>
+          </li>
+          <li class="nav-item">
+              <a href="javascript:void(0)" onclick="openTab(event, 'tab4');" class="nav-item tablink btn btn-secondary btn-lg pb-2 pt-2 pr-3 pl-3">Emelet</a>
+          </li>
+          <li class="nav-item">
+              <a href="javascript:void(0)" onclick="openTab(event, 'tab5');" class="nav-item tablink btn btn-secondary btn-lg pb-2 pt-2 pr-3 pl-3">Tetőtér</a>
+          </li>
+      </ul>
+      </div>
+    </div>
+        <div id="tab1" class="card-body tab" style="display:none">
+          <div class="row">
+          <div class="col-sm text-center">
+            <h6>közlekedő</h6>
+            <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+              <input onchange="kalkulal()" input type="number" name="pkozlekedo" id="pkozlekedo" value="0" maxlength="4" min="0" max="9999" class="input-group-text"></input><br> 
+              <div class="input-group-append">
+                <span class="input-group-text m2">m2</span>
+              </div>
+            </div>
+            <h6>lépcső</h6>
+            <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+              <input onchange="kalkulal()" input type="number" name="plepcso" id="plepcso" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input>
+              <div class="input-group-append">
+                <span class="input-group-text">m2</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm text-center">
+            <h6>tároló / kamra</h6>
+            <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+            <input onchange="kalkulal()" input type="number" name="ptarolokamra" id="ptarolokamra" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+            <div class="input-group-append">
+              <span class="input-group-text m2">m2</span>
+            </div>
+          </div>
+          <h6>fürdő/zuhanyzó</h6>
+          <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+            <input onchange="kalkulal()" input type="number" name="pfurdozuhanyzo" id="pfurdozuhanyzo" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input>
+            <div class="input-group-append">
+              <span class="input-group-text m2">m2</span>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div id="tab2" class="card-body tab" style="display:none">
+          <div class="row">
+          <div class="col-sm text-center">
+          <h6 style="display: inline-block">fedett terasz</h6>
+          <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+          <input onchange="kalkulal()" input type="number" name="terasz" id="terasz" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+          <div class="input-group-append">
+            <span class="input-group-text m2">m2</span>
+          </div>
+        </div>  
+        </div>
+          </div>
+        </div>
+        <div id="tab3" class="card-body tab" style="display:none">
+          <div class="row">
+          <div class="col-sm text-center">
+                  <h6>előszoba</h6>
+                  <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" onkeydown="kalkulal()" input type="number" name="feloszoba" id="feloszoba" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>közlekedő</h6>
+                  <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="fkozlekedo" id="fkozlekedo" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>lépcső</h6>
+                  <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="flepcso" id="flepcso" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>fürdő</h6>
+                <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="ffurdozuhanyzo" id="ffurdozuhanyzo" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>külön WC</h6>
+                <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="fwc" id="fwc" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>szoba 1</h6>
+                <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="fszoba1" id="fszoba1" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>   
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                </div>
+                <div class="col-sm text-center">
+                  <h6>szoba 2</h6>
+                  <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="fszoba2" id="fszoba2" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>szoba 3</h6>
+                <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="fszoba3" id="fszoba3" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>garázs</h6>
+                <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="fgarazs" id="fgarazs" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>nappali</h6>
+                <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="fnappali" id="fnappali" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>étkező</h6>
+                <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="fetkezo" id="fetkezo" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>konyha</h6>
+                <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="fkonyha" id="fkonyha" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                </div>
+        </div>
+        </div>
+        <div id="tab4" class="card-body tab" style="display:none">
+          <div class="row">
+          <div class="col-sm text-center">
+            <h6>közlekedő</h6>
+            <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="ekozlekedo" id="ekozlekedo" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>fürdő</h6>
+                  <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="efurdo" id="efurdo" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>külön WC</h6>
+                  <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="ewc" id="ewc" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>szoba 1</h6>
+                  <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="eszoba1" id="eszoba1" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>szoba 2</h6>
+                  <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="eszoba2" id="eszoba2" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                </div>
+          <div class="col-sm text-center">
+            <h6>szoba 3</h6>
+            <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+            <input onchange="kalkulal()" input type="number" name="eszoba3" id="eszoba3" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+            <div class="input-group-append">
+              <span class="input-group-text m2">m2</span>
+            </div>
+          </div>
+          <h6>nappali</h6>
+          <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+            <input onchange="kalkulal()" input type="number" name="enappali" id="enappali" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+            <div class="input-group-append">
+              <span class="input-group-text m2">m2</span>
+            </div>
+          </div>
+          <h6>étkező</h6>
+          <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+            <input onchange="kalkulal()" input type="number" name="eetkezo" id="eetkezo" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+            <div class="input-group-append">
+              <span class="input-group-text m2">m2</span>
+            </div>
+          </div>
+          <h6>konyha</h6>
+          <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+            <input onchange="kalkulal()" input type="number" name="ekonyha" id="ekonyha" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input>
+            <div class="input-group-append">
+              <span class="input-group-text m2">m2</span>
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div id="tab5" class="card-body tab" style="display:none">
+          <div class="row">
+          <div class="col-sm text-center">
+            <h6>közlekedő</h6>
+            <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="tkozlekedo" id="tkozlekedo" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>fürdő</h6>
+                  <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="tfurdo" id="tfurdo" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                <h6>külön WC</h6>
+                  <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                  <input onchange="kalkulal()" input type="number" name="twc" id="twc" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+                  <div class="input-group-append">
+                    <span class="input-group-text m2">m2</span>
+                  </div>
+                </div>
+                </div>
+          <div class="col-sm text-center">
+            <h6>szoba 1</h6>
+            <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+            <input onchange="kalkulal()" input type="number" name="tszoba1" id="tszoba1" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+            <div class="input-group-append">
+              <span class="input-group-text m2">m2</span>
+            </div>
+          </div>
+          <h6>szoba 2</h6>
+            <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+            <input onchange="kalkulal()" input type="number" name="tszoba2" id="tszoba2" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+            <div class="input-group-append">
+              <span class="input-group-text m2">m2</span>
+            </div>
+          </div>
+          <h6>szoba 3</h6>
+            <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+            <input onchange="kalkulal()" input type="number" name="tszoba3" id="tszoba3" value="0" maxlength="4" min="0" max="9999" class="input-group-text"> </input><br>
+            <div class="input-group-append">
+              <span class="input-group-text m2">m2</span>
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
+</div>
+</div>
+</body>
+</html>
